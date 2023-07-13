@@ -1,0 +1,23 @@
+version: "3.0"
+
+services:
+
+  ethereum:
+    image: ethereum/client-go:v1.11.6
+    container_name: ethereum
+    entrypoint: /bin/sh
+    command: /share/scripts/init.sh
+    env_file:
+      - .env
+    networks:
+      priv-eth-net:
+    volumes:
+      - ./share:/share
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+networks:
+  priv-eth-net:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.16.254.0/28
