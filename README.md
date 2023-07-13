@@ -9,6 +9,13 @@ cp .env.example .env
 
 # GETH_ACCOUNT1_PASSWORD, GETH_ACCOUNT2_PASSWORD will use in account initialization.
 
+# BOOT_NODE: P2P node key as hex (for testing),
+# so recommend to remove this parameter and 
+# manually handle joining nodesin in production. 
+
+# BOOT_NODE_ENODE: Comma separated enode URLs for P2P discovery bootstrap.
+
+# MINER_ADDRESS: specify the address of the account to receive mining rewards.
 ```
 ## Account initialization
 #### You can use in genesis.json for account default amount or normal account.
@@ -47,3 +54,20 @@ docker run -it --rm -v ./share:/share --entrypoint /bin/sh ethereum/client-go:v1
 # but must create accont by this command will bring the data when initializing.
 geth account new  --datadir /share/miner/data
 ```
+
+### After the creation is complete, put the account that needs to be specified into the environment configuration file.
+```bash
+#.env
+MINER_ADDRESS=0xad28c3e05a41a0d791d05693e84bcd029391def2
+```
+
+## system initialization
+```bash
+docker-compose up 
+```
+## I wish you a good day.
+---
+## borrow this article.
+https://medium.com/scb-digital/running-a-private-ethereum-blockchain-using-docker-589c8e6a4fe8
+
+
