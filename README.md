@@ -36,3 +36,14 @@ Address0: { 0xd30bc9ed211cca30c1a44b76ee260f6d90495308 }
 Address1: { 0xad28c3e05a41a0d791d05693e84bcd029391def2 }
 ```
 The data will store in {$project}/share/miner/data/keystore.
+
+### If you want to create account by manual.
+```
+cd {$project}
+sh manual.sh
+# or
+docker run -it --rm -v ./share:/share --entrypoint /bin/sh ethereum/client-go:v1.11.6
+
+# but must create accont by this command will bring the data when initializing.
+geth account new  --datadir /share/miner/data
+```
